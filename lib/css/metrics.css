@@ -1,0 +1,43 @@
+#header {
+background-attachment: scroll;
+background-clip: border-box;
+background-color: transparent;
+background-image: url(../images/learnboost_sprite.png);
+background-origin: padding-box;
+background-position: 0 0;
+background-repeat: no-repeat;
+background-size: auto auto;
+height: 76px;
+margin-bottom: 18px;
+margin-left: 10px;
+margin-right: 0;
+margin-top: 50px;
+position: relative;
+width: 905px;
+}
+
+#header h1 {
+padding: 10px;
+color: white;
+}
+
+#header h1 span {
+font-size: 50%;
+}
+
+#up_nodes {
+background-color: #444444;
+padding-left: 10px;
+}
+
+#down_nodes {
+background-color: #444444;
+padding-left: 10px;
+}
+
+#up_nodes h2 {
+color: white;
+}
+#down_nodes h2 {
+color: white;
+}

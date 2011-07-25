@@ -1,0 +1,12 @@
+%% Dispatch rules for mod_zotonic.
+
+[
+    {home,                [],                         resource_template,     [ {template, "home.tpl"}]},
+    {test,                ["test"],                   resource_template,     [ {template, "test.tpl"}]},
+    {node_status,         ["nodes", "status"],        resource_template,     [ {template, "node_status.tpl"}]},
+    {calendar,            ["calendar"],               resource_template,     [ {template, "calendar.tpl"} ]},
+    {calendar_details,    ["calendar", id, slug],     resource_page,         [ {template, "calendar_details.tpl"}, {cat, calendar} ]},
+    {blog,                ["blog"],                   resource_template,     [ {template, "blog.tpl"} ]},
+    {blog_details,        ["blog", id, slug],         resource_page,         [ {template, "blog_details.tpl"}, {cat, blog} ]}
+].
+
