@@ -27,16 +27,14 @@ event({postback, {bring_up, Props}, _TriggerId, _TargetId}, Context) ->
 event({postback, {make_unavailable, Props}, _TriggerId, _TargetId}, Context) ->
     Id = proplists:get_value(id, Props),
     Node = proplists:get_value(node, Props),
-    {ok, _} = z_db:update(rsc, Id, [{status, "down"}], Context),
-    z_depcache:flush(Context),
+    {ok, _} = m_rsc:update(Id, [{status, "down"}], Context),
     mod_signal:emit({node, [{node_id, Node}]}, Context),
     Context;
 
 event({postback, {make_available, Props}, _TriggerId, _TargetId}, Context) ->
     Id = proplists:get_value(id, Props),
     Node = proplists:get_value(node, Props),
-    {ok, _} = z_db:update(rsc, Id, [{status, "up"}], Context),
-    z_depcache:flush(Context),
+    {ok, _} = m_rsc:update(Id, [{status, "up"}], Context),
     mod_signal:emit({node, [{down_node_id, Node}]}, Context),
     Context.
 
