@@ -6,14 +6,10 @@
 -mod_prio(10).
 
 %% gen_server exports
--export([init/1]).
 -export([event/2]).
+-export([datamodel/0]).
 
 -include_lib("zotonic.hrl").
-
-%% @doc Initialize the datamodel
-init(Context) ->
-    z_datamodel:manage(?MODULE, datamodel(), Context).
 
 event({postback, {take_down, Props}, _TriggerId, _TargetId}, Context) ->
     Node = proplists:get_value(node, Props),
@@ -46,35 +42,12 @@ event({postback, {make_available, Props}, _TriggerId, _TargetId}, Context) ->
 
 datamodel() ->
     [
-     {resources,
+     {categories,
       [
-       %% MENU ENTRIES
-       {page_home,
-        text,
-        [{title, <<"Home">>},
-         {summary, <<"Welcome to your blog!">>},
-         {page_path, <<"/">>}]
-       },
-
-       %% KEYWORDS
-
-       {kw_announcement,
-        keyword,
-        [{title, <<"Announcement">>}]
-       },
-       {kw_technical,
-        keyword,
-        [{title, <<"Technical">>}]
-       },
-       {kw_support,
-        keyword,
-        [{title, <<"Support">>}]
-       }
-
+       {node,
+        undefined,
+        [{title, <<"Node">>}]
+        }
       ]
-     },
-
-     {menu,
-      [page_home]
      }
     ].
